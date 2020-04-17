@@ -5,7 +5,7 @@
 
 
 typedef struct tree_node {
-    pid_t pid;
+    char* name;
     int children_no;
     struct tree_node* children; 
 } t_node;
@@ -24,7 +24,11 @@ void print_tree (struct tree_node *root){
 }
 
 void gen_proc_tree(t_node root){
-    pid_t pid = fork();
+    int i;
+    pid_t pid;
+    for(i = 0; i < root.children_no; i++){
+        pid = fork();
+    }
     root.pid = pid;
 
 
